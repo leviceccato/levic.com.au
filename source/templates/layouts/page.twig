@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    {{ include('@/partials/head.twig') }}
+
+    {% block head %}{% endblock %}
+
+</head>
+<body>
+
+    {{ include('@/partials/header.twig') }}
+
+    <main
+        class="Main"
+        id="main"
+        tabindex="-1">
+
+        {% block body %}
+
+            {{ include('@/partials/story.twig') }}
+            {{ include('@/partials/listing.twig') }}
+
+        {% endblock %}
+
+    </main>
+
+    {{ include('@/partials/footer.twig') }}
+
+</body>
+</html>

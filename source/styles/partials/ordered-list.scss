@@ -1,0 +1,25 @@
+@use '~/utilities/resize' as *;
+
+.OrderedList {
+    counter-reset: counter;
+
+    &-item {
+        counter-increment: bold-counter;
+        padding-left: 1.1em;
+        position: relative;
+
+        &::before {
+            content: counter(bold-counter);
+            position: absolute;
+            font-size: 0.7em;
+            font-weight: 700;
+            top: 0.4em;
+            left: -0.1em;
+            display: inline-block;
+        }
+
+        & + & {
+            @include resize(margin-top, 7px, 15px);
+        }
+    }
+}

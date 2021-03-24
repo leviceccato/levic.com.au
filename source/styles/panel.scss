@@ -1,0 +1,26 @@
+// Scrollbar fix
+body,
+html {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.k-panel-view {
+    overflow-y: visible;
+
+    // Prevent dialog from scrolling to top
+    .k-panel[data-dialog] & {
+        overflow: visible; 
+    }
+}
+
+// Basic QoL 
+.k-toggle-input-label {
+    user-select: none;
+}
+
+// Make backgrounds of builer plugin grey, aesthetic change
+.kBuilderBlock {
+    background-color: transparent;
+    box-shadow: none;
+}

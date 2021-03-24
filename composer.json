@@ -1,0 +1,18 @@
+{
+    "require": {
+        "getkirby/cms": "3.5.3.1",
+        "hananils/kirby-colors": "^1.2",
+        "mullema/k3-image-clip": "^2.2",
+        "timoetting/kirby-builder": "^2.0",
+        "timoetting/kirby-color": "^1.0",
+        "amteich/kirby-twig": "^4.1",
+        "bnomei/kirby3-janitor": "^2.6"
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "extra": {
+        "kirby-cms-path": false,
+        "kirby-plugin-path": "source/plugins"
+    }
+}

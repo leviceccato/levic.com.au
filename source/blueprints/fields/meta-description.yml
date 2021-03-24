@@ -1,0 +1,5 @@
+label: Meta Description
+type: textarea
+buttons: false
+help: /
+  Should be 50–160 characters in length.

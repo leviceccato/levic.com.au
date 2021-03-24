@@ -1,0 +1,41 @@
+@use '~/utilities/resize' as *;
+@use '~/config/breakpoints' as *;
+
+.Timeline {
+
+    &-item {
+        padding-left: 12px;
+        border-left: 2px solid currentColor;
+
+        @include media(nav-spacing) {
+            padding-left: 18px;
+        }
+
+        & + & {
+            margin-top: 6px;
+        }
+
+        &:not(:last-of-type) {
+            @include resize(padding-bottom, 20px, 35px);
+        }
+    }
+
+    &-heading {
+        letter-spacing: -0.03em;
+        line-height: 1.25;
+        @include resize(font-size, 19px, 24px);
+    }
+
+    &-headingMain {
+        padding-right: 0.1em;
+    }
+
+    &-date {
+        @include resize(font-size, 13px, 15px);
+        @include resize(margin-top, 7px, 10px);
+    }
+
+    &-body {
+        @include resize(margin-top, 8px, 12px);
+    }
+}

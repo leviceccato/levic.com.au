@@ -1,0 +1,33 @@
+{% set listing = listing ?? page.children() | map(child => {
+    link: child.url,
+    image: child.coverImage.toImage.clip(null, 280).url,
+    label: child.title
+}) %}
+
+{% if listing ?? null %}
+
+    <div class="Listing Main-item">
+
+        <div class="Listing-wrapper">
+            {% for item in listing %}
+                
+                <a
+                    class="Listing-link"
+                    href="{{ item.link }}">
+                    <img
+                        class="Listing-image"
+                        src="{{ item.image }}"
+                        style="
+                            background-image: url('{{ item.image }}');
+                        ">
+                    <span class="Listing-label">
+                        {{ item.label }}
+                    </span>
+                </a>
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endif %}

@@ -1,0 +1,42 @@
+columns:
+
+  primary:
+    width: 2/3
+    sections:
+
+      listed:
+        headline: Listed
+        type: pages
+        status: listed
+        image: false
+        sortable: false
+
+      unlisted:
+        headline: Unlisted
+        type: pages
+        status: unlisted
+        image: false
+        sortable: false
+
+  secondary:
+    width: 1/3
+    sections:
+
+      meta:
+        type: fields
+        fields:
+
+          metaImage: fields/meta-image
+
+      images:
+        headline: Images
+        type: files
+        template: image
+
+      jobs:
+        type: fields
+        fields:
+
+          janitor: fields/janitor
+
+      

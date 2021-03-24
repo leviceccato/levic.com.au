@@ -1,0 +1,13 @@
+extends: layouts/entry
+
+title: Error
+
+icon: alert
+
+options:
+  changeTemplate: false
+  changeStatus: false
+  changeSlug: false
+  changeTitle: false
+  duplicate: false
+  delete: false

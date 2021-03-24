@@ -1,0 +1,234 @@
+// A non-project specific opinionated reset based on Sanitize.css.
+
+// Add border box sizing in all browsers.
+*,
+::before,
+::after {
+    box-sizing: border-box; // 
+}
+
+::before,
+::after {
+    text-decoration: inherit; // Add text decoration inheritance in all browsers.
+    vertical-align: inherit; // Add vertical alignment inheritance in all browsers
+}
+
+html {
+    cursor: default;
+    line-height: 1.5;
+    -moz-tab-size: 4; // Use a 4-space tab width in all browsers
+    tab-size: 4;
+    -webkit-tap-highlight-color: transparent; // Remove the grey highlight on links in iOS & blue on Android
+    -ms-text-size-adjust: 100%; // Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
+    -webkit-text-size-adjust: 100%;
+    word-break: break-word; // Breaks words to prevent overflow in all browsers
+    height: 100%; // Allow setting background colour on body
+}
+
+body {
+    margin: 0;
+    height: 100%; // Allow setting background colour
+    -webkit-font-smoothing: antialiased; // Fixes bold looking fonts on macOS in Chrome & Safari
+    -moz-osx-font-smoothing: grayscale; // Fixes bold looking fonts on macOS in Firefox
+    overflow-y: scroll; // Always show vertical scrollbar to avoid layout jitter
+}
+
+// Zero out margins
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+    margin: 0;
+}
+
+// Zero out list styles
+ol,
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+// Reset headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+// Reset links
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+// Correct in all browsers
+pre,
+code,
+kbd,
+samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    display: block;
+    vertical-align: middle;
+}
+
+// 
+button {
+    cursor: pointer;
+    color: inherit;
+    background: none;
+    border: none;
+    font-family: inherit;
+    text-align: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+}
+
+iframe {
+    border-style: none;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    padding: 0;
+    line-height: inherit;
+    color: inherit;
+}
+
+button {
+    background-color: transparent;
+    background-image: none;
+    padding: 0;
+}
+
+button:focus,
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+input {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+
+    &::-webkit-input-placeholder {
+        // Edge
+        color: inherit;
+    }
+
+    &:-ms-input-placeholder {
+        // Internet Explorer 10-11
+        color: inherit;
+    }
+
+    &::placeholder {
+        color: inherit;
+        opacity: inherit;
+    }
+
+    &::-ms-clear {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
+    &::-ms-reveal {
+        // clears the 'X' from Internet Explorer (have to be separate selectors)
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
+    &[type=search] {
+
+        &::-webkit-search-decoration,
+        &::-webkit-search-cancel-button,
+        &::-webkit-search-results-button,
+        &::-webkit-search-results-decoration {
+            // clears the 'X' from Chrome
+            display: none;
+        }
+    }
+}
+
+button,
+textarea,
+input,
+select,
+a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    border: solid 3px transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 0 2px currentColor;
+    border: solid 4px transparent;
+    border-radius: 10px;
+
+    &:hover {
+        border: none;
+    }
+}
+
+// Custom cursors. The 2x image is actually 1.5x because it looks better for some reason.
+// Hi DPI versions not showing correctly on firefox.
+
+* {
+    cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="17" height="26" viewBox="0 0 17 26" stroke="%23000" fill="%23EBEBEB" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10"%3E%3Cpath d="M13.12 14.99L1.02 2.88V22.7a1.82 1.82 0 003.1 1.28L8.12 20h5.62a1.82 1.82 0 001.3-3.11l-1.91-1.9z" /%3E%3C/svg%3E'), default;
+    cursor:
+        -webkit-image-set(url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="17" height="26" viewBox="0 0 17 26" stroke="%23000" fill="%23EBEBEB" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10"%3E%3Cpath d="M13.12 14.99L1.02 2.88V22.7a1.82 1.82 0 003.1 1.28L8.12 20h5.62a1.82 1.82 0 001.3-3.11l-1.91-1.9z" /%3E%3C/svg%3E') 1x,
+        url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 39" width="25" height="39" fill="%23EBEBEB" stroke="%23000" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10"%3E%3Cpath d="M19.75 22.99L1.59 4.83v29.71a2.73 2.73 0 004.67 1.94l5.97-5.97h8.44a2.73 2.73 0 001.93-4.67l-2.85-2.85z" /%3E%3C/svg%3E') 2x), default;
+}
+
+a,
+button {
+    cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="27" fill="%23EBEBEB" stroke="%23000" stroke-width="2" stroke-miterlimit="10" viewBox="0 0 24 27"%3E%3Cpath d="M18.991 10.096v0a1.83 1.83 0 00-1.83-1.83h-2.157v0a2.073 2.073 0 00-2.074-2.074h-1.914V3.226a1.994 1.994 0 00-1.994-1.993h0a1.994 1.994 0 00-1.994 1.993v13.086l-2.4-2.4a1.994 1.994 0 00-2.819 0h0a1.994 1.994 0 000 2.82l6.355 6.355a9.246 9.246 0 006.538 2.708h0a8.277 8.277 0 008.277-8.277v-5.592c0-1.01-.82-1.83-1.83-1.83h-2.158z" /%3E%3Cpath d="M11.016 6.192v6.415M18.991 10.096v3.569M15.004 8.265v4.871" /%3E%3C/svg%3E') 5 0, pointer;
+    cursor:
+        -webkit-image-set(url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="27" fill="%23EBEBEB" stroke="%23000" stroke-width="2" stroke-miterlimit="10" viewBox="0 0 24 27"%3E%3Cpath d="M18.991 10.096v0a1.83 1.83 0 00-1.83-1.83h-2.157v0a2.073 2.073 0 00-2.074-2.074h-1.914V3.226a1.994 1.994 0 00-1.994-1.993h0a1.994 1.994 0 00-1.994 1.993v13.086l-2.4-2.4a1.994 1.994 0 00-2.819 0h0a1.994 1.994 0 000 2.82l6.355 6.355a9.246 9.246 0 006.538 2.708h0a8.277 8.277 0 008.277-8.277v-5.592c0-1.01-.82-1.83-1.83-1.83h-2.158z" /%3E%3Cpath d="M11.016 6.192v6.415M18.991 10.096v3.569M15.004 8.265v4.871" /%3E%3C/svg%3E') 1x,
+        url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 41" width="36" height="41" fill="%23EBEBEB" stroke="%23000" stroke-width="3" stroke-miterlimit="10"%3E%3Cpath d="M28.513 15.599h0a2.746 2.746 0 00-2.746-2.746h-3.236v0a3.11 3.11 0 00-3.11-3.11H16.55V5.295a2.99 2.99 0 00-2.991-2.991h0a2.99 2.99 0 00-2.991 2.991v19.628l-3.599-3.599a2.991 2.991 0 00-4.23 0h0a2.991 2.991 0 000 4.23l9.532 9.532a13.87 13.87 0 009.807 4.062h0c6.857 0 12.415-5.559 12.415-12.415v-8.389a2.744 2.744 0 00-2.744-2.744h-3.236z" /%3E%3Cpath fill="none" d="M16.55 9.743v9.623M28.513 15.599v5.353M22.531 12.853v7.306" /%3E%3C/svg%3E') 2x) 5 0, pointer;
+}
+
+input {
+    cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="24" viewBox="0 0 8 24" fill="none" stroke="%23000" stroke-width="2" stroke-miterlimit="10"%3E%3Cpath d="M.55 1.12C2.45 1.12 4 2.66 4 4.56v14.88c0 1.9-1.54 3.44-3.45 3.44M7.45 22.88A3.45 3.45 0 014 19.44V4.56c0-1.9 1.54-3.44 3.45-3.44M1.24 12h5.52" /%3E%3C/svg%3E'), text;
+    cursor:
+        -webkit-image-set(url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="24" viewBox="0 0 8 24" fill="none" stroke="%23000" stroke-width="2" stroke-miterlimit="10"%3E%3Cpath d="M.55 1.12C2.45 1.12 4 2.66 4 4.56v14.88c0 1.9-1.54 3.44-3.45 3.44M7.45 22.88A3.45 3.45 0 014 19.44V4.56c0-1.9 1.54-3.44 3.45-3.44M1.24 12h5.52" /%3E%3C/svg%3E') 1x,
+        url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 36" width="11" height="36" fill="none" stroke="%23000" stroke-width="3" stroke-miterlimit="10"%3E%3Cpath d="M.33 1.67h0A5.17 5.17 0 015.5 6.84v22.32a5.17 5.17 0 01-5.17 5.17h0M10.67 34.33h0a5.17 5.17 0 01-5.17-5.17V6.84a5.17 5.17 0 015.17-5.17h0M1.2 17.53h8.6" /%3E%3C/svg%3E') 2x), text;
+}

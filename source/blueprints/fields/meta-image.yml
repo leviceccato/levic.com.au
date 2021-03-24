@@ -1,0 +1,11 @@
+label: Meta Image
+type: image-clip
+multiple: false 
+layout: cards
+uploads: image
+clip:
+  minwidth: 120
+  minheight: 63
+  ratio: fixed
+help: |
+  Resized to 1200 x 630 pixels if it isn't that size already.

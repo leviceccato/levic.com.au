@@ -1,0 +1,249 @@
+{% set story = story ?? page.story.toStructure ?? null %}
+
+    {% if story %}
+
+    {# Set level to dynamically assign heading types in some blocks #}
+    {% set currentHeadingLevel = 1 %}
+
+    <div class="Story Main-item">
+
+        {% for block in story %}
+
+            {% set key = block._key %}
+            {% set text = block.text %}
+
+            {% if key == 'heading1' %}
+                
+                {% set currentHeadingLevel = 1 %}
+
+                <h1 class="Heading1 Story-item">
+                    {{ text | raw }}
+                </h1>
+
+            {% elseif key == 'heading2' %}
+
+                {% set currentHeadingLevel = 2 %}
+                {% set slug = text | slug %}
+            
+                <h2 class="Heading2 Story-item">
+                    <span
+                        class="Heading2-anchor"
+                        id="heading-{{ slug }}">
+                    </span>
+                    <a
+                        class="Heading2-link"
+                        href="#heading-{{ slug }}">
+                        <span class="Heading2-linkWrapper">
+                            {{ text }}
+                        </span>
+                    </a>
+                </h2>
+            
+            {% elseif key == 'heading3' %}
+
+                {% set currentHeadingLevel = 3 %}
+                {% set slug = text | slug %}
+
+                <h3 class="Heading3 Story-item">
+                    <span
+                        class="Heading3-anchor"
+                        id="heading-{{ slug }}">
+                    </span>
+                    <a
+                        class="Heading3-link"
+                        href="#heading-{{ slug }}">
+                        <span class="Heading3-linkWrapper">
+                            {{ text }}
+                        </span>
+                    </a>
+                </h3>
+
+            {% elseif key == 'paragraph' %}
+
+                <p class="Paragraph Story-item Copy">
+                    {{ text.kt.inline | raw }}
+                </p>
+
+            {% elseif key == 'blockquote' %}
+                
+                <blockquote class="Blockquote Story-item">
+                    <div class="Blockquote-content Copy">
+                        {{ text.kt.inline | raw }}
+                    </div>
+                </blockquote>
+
+            {% elseif key == 'orderedList' %}
+
+                {% set items = block.items.toStructure %}
+            
+                <ol class="OrderedList Story-item">
+                    {% for item in items %}
+
+                        <li class="OrderedList-item Copy">
+                            {{ item.text.kt.inline | raw }}
+                        </li>
+
+                    {% endfor %}
+                </ol>
+
+            {% elseif key == 'unorderedList' %}
+                
+                {% set items = block.items.toStructure %}
+            
+                <ul class="UnorderedList Story-item">
+                    {% for item in items %}
+
+                        <li class="UnorderedList-item Copy">
+                            {{ item.text.kt.inline | raw }}
+                        </li>
+                        
+                    {% endfor %}
+                </ul>
+
+            {% elseif key == 'image' %}
+
+                {% set image = block.image.toImage %}
+
+                {% if image %}
+
+                    {% set width = image.widthOverride.isEmpty
+                        ? image.width
+                        : image.widthOverride %}
+                    {% set ratio = image.height / image.width * 100 %}
+                    {% set slug = image.filename | slug %}
+                    {% set background = image.colourOverride.isEmpty
+                        ? "background-image: url(#{image.resize(1, 1).url});"
+                        : "background-color: #{image.colourOverride};" %}
+
+                    <figure class="Figure Story-item">
+
+                        <div class="Figure-container">
+                            <span
+                                class="Figure-anchor"
+                                id="figure-{{ slug }}">
+                            </span>
+                            <a  
+                                class="Figure-link"
+                                href="/figure/{{ page.id }}/{{ slug }}"
+                                style="
+                                    width: {{ width }}px;
+                                    padding-bottom: {{ ratio }}%;
+                                    {{ background }} 
+                                ">
+                                <img
+                                    class="Figure-content"
+                                    src="{{ image.url }}"
+                                    alt="{{ image.alternateText }}">
+                            </a>
+                        </div>
+
+                        {% if block.caption.isNotEmpty %}
+
+                            <figcaption class="Figure-caption Copy">
+                                {{ block.caption.kt.inline | raw }}
+                            </figcaption>
+
+                        {% endif %}
+
+                    </figure>
+
+                {% endif %}
+
+            {% elseif key == 'video' %}
+
+                {% set video = block.video.toFile %}
+
+                {% if video %}
+
+                    {% set terms = video.ratioOverride.isEmpty
+                        ? ['16', '9']
+                        : video.ratioOverride | split(':') %}
+                    {% set padding = terms[1] / terms[0] * 100 %}
+                    {% set slug = video.filename | slug %}
+                    {% set width = video.widthOverride.isEmpty
+                        ? '514'
+                        : video.widthOverride %}
+                    {% set backgroundColour = video.colourOverride.isEmpty
+                        ? 'currentColor'
+                        : video.colourOverride %}
+
+                    <figure class="Figure Story-item">
+
+                        <div class="Figure-container">
+
+                            <span
+                                class="Figure-anchor"
+                                id="figure-{{ slug }}">
+                            </span>
+                            
+                            <a  
+                                class="Figure-link"
+                                href="/figure/{{ page.id }}/{{ slug }}"
+                                style="
+                                    width: {{ width }}px;
+                                    padding-bottom: {{ padding }}%;
+                                    background-color: {{ backgroundColour }}; 
+                                ">
+                                <video
+                                    class="Figure-content"
+                                    autoplay
+                                    loop
+                                    muted
+                                    inline
+                                    src="{{ video.url }}"
+                                    type="video/mp4">
+                                </video>
+                            </a>
+
+                        </div>
+
+                        {% if block.caption.isNotEmpty %}
+
+                            <figcaption class="Figure-caption Copy">
+                                {{ block.caption.kt.inline | raw }}
+                            </figcaption>
+
+                        {% endif %}
+
+                    </figure>
+
+                {% endif %}
+
+            {% elseif key == 'timeline' %}
+
+                {# Set timeline heading based on current heading (not more than 6) #}
+                {% set timelineHeadingLevel = min(currentHeadingLevel + 1, 6) %}
+                {% set timeline = block.timeline.toStructure %}
+
+                <ul class="Timeline Story-item">
+                    {% for item in timeline %}
+
+                        <li class="Timeline-item">
+
+                            <h{{ timelineHeadingLevel }} class="Timeline-heading">
+                                <strong class="Timeline-headingMain">
+                                    {{ item.heading.kt.inline | raw }}
+                                </strong>
+                                {{ item.subheading.kt.inline | raw }}
+                            </h{{ timelineHeadingLevel }}>
+                            
+                            <p class="Timeline-date">
+                                {{ item.date.kt.inline | raw }}
+                            </p>
+
+                            <div class="Timeline-body Copy">
+                                {{ item.body.kt.inline | raw }}
+                            </div>
+
+                        </li>
+                        
+                    {% endfor %}
+                </ul>
+
+            {% endif %}
+
+        {% endfor %}
+        
+    </div>
+
+{% endif %}

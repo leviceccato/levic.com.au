@@ -1,0 +1,11 @@
+extends: layouts/listing
+
+title: Design
+
+options:
+  changeStatus: false
+  changeSlug: false
+  changeTemplate: false
+  changeTitle: false
+  duplicate: false
+  delete: false

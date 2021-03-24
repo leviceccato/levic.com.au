@@ -1,0 +1,11 @@
+extends: layouts/entry
+
+title: Résumé
+
+options:
+  changeTemplate: false
+  changeStatus: false
+  changeSlug: false
+  changeTitle: false
+  duplicate: false
+  delete: false

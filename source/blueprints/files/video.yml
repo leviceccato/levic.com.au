@@ -1,0 +1,36 @@
+title: Story Video
+
+accept: video/mp4
+
+columns:
+
+  -
+    width: 1/2
+    sections:
+
+      main:
+        type: fields
+        fields:
+
+          widthOverride:
+            label: Width
+            type: number
+            help: How wide this file should be displayed.
+            min: 1
+            max: 1920
+            after: px
+
+          ratioOverride:
+            label: Ratio
+            help: The original ratio of this video.
+            type: text
+            placeholder: 16:9
+
+          colourOverride:
+            label: Background Colour Override
+            type: color
+            editableAlpha: false
+            default: '#000000'
+            presets:
+              - '#000000'
+              - '#FFFFFF'

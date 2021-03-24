@@ -1,0 +1,40 @@
+/**
+ * 
+ *  Breakpoint Framework
+ *  --------------------
+ * 
+ *  This code promotes a methodology for managing media queries and breakpoints in your
+ *  css. It revolves around a breakpoints map where you define all your media query values.
+ *  Values should be defined per component. For example, if you were to add a breakpoint
+ *  for your mobile nav turning into a desktop nav, it would be better to call it 'nav' as
+ *  instead of something like 'desktop'. This is because having very specific selectors
+ *  allows you to keep your components decoupled. Also because it is better to specify
+ *  breakpoints at points where your design breaks (it's all in the name) as opposed to
+ *  setting predefined general sizes.
+ * 
+ *  Usage:
+ * 
+ *  .header {
+ *    
+ *    @include media(xs) {
+ *      color: red;
+ *    }
+ *  }
+ * 
+ */
+
+$breakpoints: (
+
+    // Defaults
+    xs: 320px,
+    xl: 1000px,
+
+    // Custom
+    nav-spacing: 355px,
+);
+
+@mixin media($breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+        @content;
+    }
+}

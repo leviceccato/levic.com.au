@@ -1,0 +1,6 @@
+extends: layouts/entry
+
+title: Default
+
+options:
+  changeTemplate: false

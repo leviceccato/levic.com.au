@@ -1,0 +1,77 @@
+@use '~/config/breakpoints' as *;
+@use '~/config/globals' as *;
+@use '~/utilities/resize' as *;
+
+.Footer {
+    $this: &;
+    flex-shrink: 0;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    max-width: 550px;
+    box-sizing: border-box;
+    @include resize(padding-bottom, 0px, 70px);
+
+    @include media(nav-spacing) {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    &-column {
+        width: calc((100% - 12px) / 3);
+        border-top: 2px solid currentColor;
+    }
+
+    &-link {
+        display: block;
+        line-height: 1.4;
+        font-weight: 700;
+        padding-left: 3px;
+        padding-right: 3px;
+        margin-left: -3px;
+        margin-right: -3px;
+        letter-spacing: -0.03em;
+        padding-bottom: 29px;
+        @include resize(padding-top, 10px, 11px);
+        @include resize(font-size, 16px, 18px);
+
+        @include media(nav-spacing) {
+            letter-spacing: -0.02em;
+        }
+
+        &:focus,
+        &:hover {
+            outline: none;
+
+            #{$this} {
+
+                &-linkWrapper {
+                    background-image: linear-gradient(g(fg-col), g(fg-col));
+                }
+            }
+        }
+    }
+
+    &-linkWrapper {
+        pointer-events: none;
+        background-position: 0% 96%;
+        background-size: 1px 2px;
+        background-repeat: repeat-x;
+        position: relative;
+        text-shadow:
+            0.04em 0 g(bg-col), -0.04em 0 g(bg-col), 0 0.04em g(bg-col),
+            0 -0.04em g(bg-col), 0.07em 0 g(bg-col), -0.07em 0 g(bg-col),
+            0.1em 0 g(bg-col), -0.1em 0 g(bg-col), 0.13em 0 g(bg-col),
+            -0.13em 0 g(bg-col), 0.16em 0 g(bg-col), -0.16em 0 g(bg-col);
+
+        &::selection,
+        *::selection {
+            text-shadow: none;
+            background-color: transparentize(g(bg-col), 0.01);
+            color: transparentize(g(fg-col), 0.01);
+        }
+    }
+}

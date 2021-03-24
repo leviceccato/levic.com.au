@@ -1,0 +1,27 @@
+{% extends '@/layouts/page.twig' %}
+
+{% set heading %}
+    Levi is a
+    <a
+        class="Heading1-link"
+        href="/design">
+        <span class="Heading1-linkWrapper">
+        designer</span></a>—<a
+        class="Heading1-link"
+        href="/development">
+        <span class="Heading1-linkWrapper">developer</span>
+    </a>
+    and
+    <a
+        class="Heading1-link"
+        href="illustration">
+        <span class="Heading1-linkWrapper">
+            illustrator</span></a>.
+{% endset %}
+
+{% set story = [
+    {
+        _key: 'heading1',
+        text: heading
+    }
+] | merge(page.story.toStructure) %}

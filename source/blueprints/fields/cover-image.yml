@@ -1,0 +1,9 @@
+label: Cover Image
+type: image-clip
+multiple: false 
+layout: cards
+uploads: image
+clip:
+  maxwidth: 10000
+  maxheight: 16100
+  ratio: fixed

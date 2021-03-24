@@ -1,0 +1,61 @@
+/**
+ * 
+ *  Resize Function
+ *  ---------------
+ *
+ *  The resize function allows a linear interpolation between 2 values as the
+ *  viewport width transitions between 2 breakpoints. It requires the breakpoint
+ *  framework defined in 'config/breakpoint.scss' to function correctly. It works by
+ *  outputing the minimum value and a breakpoint with the max value by default and
+ *  also outputting a min breakpoint with a custom calc function to calculate the
+ *  adjusted value at any viewport width between the 2 breakpoints. Some browsers do
+ *  not support this function, if this is the case then the minimum value will be
+ *  used as a default until the viewport width is greater than the max breakpoint.
+ *  
+ *  Usage:
+ *  
+ *  .selector {
+ *    @include resize(font-size, 16px, 24px);
+ *    @include resize(padding-left padding-right, 20px, 100px, mix, menu);
+ *  }
+ * 
+ */
+
+@use '~/utilities/misc' as *;
+@use '~/config/breakpoints' as *;
+
+@mixin resize($props,
+    $min-value,
+    $max-value,
+    $min-bp: 'xs',
+    $max-bp: 'xl',
+    $bp: 0px) {
+
+    $bp-vw: if(map-has-key($breakpoints, $bp), map-get($breakpoints, $bp), $bp);
+    $min-vw: if(map-has-key($breakpoints, $min-bp), map-get($breakpoints, $min-bp), $min-bp);
+    $max-vw: if(map-has-key($breakpoints, $max-bp), map-get($breakpoints, $max-bp), $max-bp);
+    $min-vw: if($min-vw > $bp-vw, $min-vw, $bp-vw);
+    $max-vw: if($max-vw > $bp-vw, $max-vw, $bp-vw);
+
+    $slope: (strip-unit($min-value) - strip-unit($max-value)) / (strip-unit($min-vw) - strip-unit($max-vw));
+    $base: strip-unit($max-value) - $slope * strip-unit($max-vw);
+    $calc-value: calc(#{$base + unit($min-value)} + #{(100 * $slope) + unquote("vw")});
+
+    @if $bp-vw>0px {
+        @media (min-width: $bp-vw) {
+            @include props($props, $min-value);
+        }
+    }
+
+    @else {
+        @include props($props, $min-value);
+    }
+
+    @media (min-width: $min-vw) {
+        @include props($props, $calc-value);
+    }
+
+    @media (min-width: $max-vw) {
+        @include props($props, $max-value);
+    }
+}

@@ -1,0 +1,25 @@
+@use '~/utilities/resize' as *;
+
+.UnorderedList {
+
+    &-item {
+        padding-left: 1.1em;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0.6em;
+            left: 0.05em;
+            width: 5px;
+            height: 5px;
+            display: inline-block;
+            border-radius: 50%;
+            background-color: currentColor;
+        }
+
+        & + & {
+            @include resize(margin-top, 7px, 15px);
+        }
+    }
+}

@@ -1,0 +1,30 @@
+@use '~/config/globals' as *;
+
+.Copy {
+
+    a {
+        color: g(fg-col);
+        background-position: 0% 92%;
+        background-image: linear-gradient(mix(g(fg-col), g(bg-col), 70%), mix(g(fg-col), g(bg-col), 70%));
+        background-size: 1px 1px;
+        background-repeat: repeat-x;
+        text-shadow:
+            0.04em 0 g(bg-col), -0.04em 0 g(bg-col), 0 0.04em g(bg-col),
+            0 -0.04em g(bg-col), 0.07em 0 g(bg-col), -0.07em 0 g(bg-col),
+            0.1em 0 g(bg-col), -0.1em 0 g(bg-col), 0.13em 0 g(bg-col),
+            -0.13em 0 g(bg-col), 0.16em 0 g(bg-col), -0.16em 0 g(bg-col);
+
+        &::selection,
+        *::selection {
+            text-shadow: none;
+        }
+
+        &:hover,
+        &:focus {
+            outline: none;
+            -webkit-text-stroke: 0.02em currentColor;
+            background-position: 0% 96%;
+            background-size: 1px 2px;
+        }
+    }
+}

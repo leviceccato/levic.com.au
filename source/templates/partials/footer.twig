@@ -1,0 +1,48 @@
+{% set previous = previous ?? page.prevListed %}
+{% set next = next ?? page.nextListed %}
+
+<footer class="Footer">
+
+    <div class="Footer-column">
+
+        {% if previous %}
+
+            <a
+                class="Footer-link"
+                href="{{ previous.url }}">
+                <span class="Footer-linkWrapper">
+                    Previous
+                </span>
+            </a>
+
+        {% endif %}
+
+    </div>
+
+    <div class="Footer-column">
+        <a
+            class="Footer-link"
+            href="#header">
+            <span class="Footer-linkWrapper">
+                Back to top
+            </span>
+        </a>
+    </div>
+
+    <div class="Footer-column">
+
+        {% if next %}
+
+            <a
+                class="Footer-link"
+                href="{{ next.url }}">
+                <span class="Footer-linkWrapper">
+                    Next
+                </span>
+            </a>
+
+        {% endif %}
+
+    </div>
+  
+</footer>

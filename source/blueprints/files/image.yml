@@ -1,0 +1,44 @@
+title: Story Image
+
+accept: image/jpeg, image/png
+
+columns:
+
+  -
+    width: 1/2
+    sections:
+
+      text:
+        type: fields
+        fields:
+
+          alternateText:
+            label: Alternate Text
+            type: text
+            
+  -
+    width: 1/2
+    sections:
+
+      overrides:
+        type: fields
+        fields:
+
+          colourOverride:
+            label: Background Colour Override
+            type: color
+            editableAlpha: false
+            default: ''
+            presets:
+              - '#000000'
+              - '#FFFFFF'
+
+          widthOverride:
+            label: Width Override
+            type: number
+            help: How wide this file should be displayed.
+            min: 1
+            max: 1920
+            after: px
+
+          

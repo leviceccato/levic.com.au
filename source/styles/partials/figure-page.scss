@@ -1,0 +1,28 @@
+@use '~/config/globals' as *;
+@use '~/utilities/svg-encode' as *;
+
+$zoom-out-1x: svg-encode('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" width="25" height="25" stroke="' + g(fg-col) + '" stroke-width="2" fill="none" stroke-miterlimit="10"><path fill="' + g(bg-col) + '" d="M23.42 20.65l-4.72-4.72a9.13 9.13 0 10-2.77 2.77l4.71 4.73a1.96 1.96 0 002.78-2.78z" /><path d="M6.08 11h9.81"/></svg>');
+
+$zoom-out-1p5x: svg-encode('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39 39" width="39" height="39" fill="none" stroke="' + g(fg-col) + '" stroke-width="3" stroke-miterlimit="10"><path fill="' + g(bg-col) + '" d="M35.28 31.14l-7.08-7.08a13.69 13.69 0 10-4.16 4.16l7.08 7.08a2.94 2.94 0 004.16-4.16z" /><path d="M10.15 16.45h12.71" /></svg>');
+
+.FigurePage {
+    height: 100%;
+
+    &-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: currentColor;
+        min-height: 100%;
+        cursor: url($zoom-out-1x) 3 3, zoom-out;
+        cursor:
+            -webkit-image-set(url($zoom-out-1x) 1x,
+            url($zoom-out-1p5x) 2x) 3 3, zoom-out;
+    }
+
+    &-content {
+        max-width: 100%;
+        pointer-events: none;
+        max-height: 100vh;
+    }
+}

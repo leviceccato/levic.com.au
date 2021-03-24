@@ -1,0 +1,4 @@
+type: janitor
+label: Clean Cache
+progress: Cleaning Cache...
+job: cleanCache

@@ -1,0 +1,53 @@
+@use '~/utilities/resize' as *;
+@use '~/utilities/lh-crop' as *;
+@use '~/config/globals' as *;
+
+.Heading2 {
+    $this: &;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    @include lh-crop(1.2);
+    @include resize(font-size, 25px, 33px);
+
+    &-anchor {
+        position: absolute;
+        margin-top: -10vh;
+    }
+
+    &-link {
+        padding: 6px;
+        margin: -6px;
+
+        &:hover,
+        &:focus,
+        &:active {
+            outline: none;
+
+            #{$this} {
+
+                &-linkWrapper {
+                    background-image: linear-gradient(g(fg-col), g(fg-col));
+                }
+            }
+        }
+    }
+
+    &-linkWrapper {
+        cursor: inherit;
+        background-position: 0% 93%;
+        background-size: 1px 2px;
+        background-repeat: repeat-x;
+        position: relative;
+        text-shadow:
+            0.04em 0 g(bg-col), -0.04em 0 g(bg-col), 0 0.04em g(bg-col),
+            0 -0.04em g(bg-col), 0.07em 0 g(bg-col), -0.07em 0 g(bg-col),
+            0.1em 0 g(bg-col), -0.1em 0 g(bg-col), 0.13em 0 g(bg-col),
+            -0.13em 0 g(bg-col), 0.16em 0 g(bg-col), -0.16em 0 g(bg-col);
+
+        &::selection,
+        *::selection {
+            text-shadow: none;
+        }
+    }
+}

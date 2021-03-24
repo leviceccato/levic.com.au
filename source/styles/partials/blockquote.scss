@@ -1,0 +1,36 @@
+@use '~/utilities/resize' as *;
+
+.Blockquote {
+
+    &-content {
+        padding-left: 1.1em;
+        position: relative;
+        line-height: 1.45;
+        @include resize(font-size, 17px, 19px);
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.2em;
+            bottom: 0.15em;
+            width: 2px;
+            background-color: currentColor;
+        }
+
+        & > u {
+            display: block;
+            text-decoration: none;
+            margin-top: 0.8em;
+            padding-left: 1em;
+            position: relative;
+            @include resize(font-size, 13px, 15px);
+
+            &::before {
+                content: '— ';
+                position: absolute;
+                left: 0;
+            }
+        }
+    }
+}

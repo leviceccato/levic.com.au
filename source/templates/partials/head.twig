@@ -1,0 +1,131 @@
+{% set title = title ?? null
+    ? title ~ ' - ' ~ site.title
+    : page.isHomePage
+        ? site.title
+        : page.title ~ ' - ' ~ site.title %}
+
+{% set description = description ?? page.metaDescription.isEmpty
+    ? null
+    : page.metaDescription %}
+
+{% set metaDescription = description ?? site.homePage.metaDescription %}
+
+{% set siteImage = site.metaImage.toImage %}
+{% set metaImageUrl = metaImage ?? null
+    ? metaImage.thumb({
+        width: 1200,
+        clip: metaImage.getClip
+    }).url
+    : siteImage
+        ? siteImage.thumb({
+            width: 1200,
+            clip: siteImage.getClip
+        }).url
+        : null %}
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1">
+
+<title>{{ title }}</title>
+
+{% if description %}
+    <meta
+        name=description
+        content="{{ description }}">
+{% endif %}
+
+{% if option('debug') %}
+    <meta
+        name="robots"
+        content="noindex">
+{% endif %}
+
+<link
+    rel="preload"
+    href="{{ manifest('static/fonts/manrope-medium.woff2') }}"
+    as="font"
+    type="font/woff2"
+    crossorigin>
+
+<link
+    rel="preload"
+    href="{{ manifest('static/fonts/manrope-bold.woff2') }}"
+    as="font"
+    type="font/woff2"
+    crossorigin>
+
+<link
+    rel="stylesheet"
+    href="{{ manifest('main.css') }}">
+
+<style>
+
+    @font-face {
+        font-family: 'Manrope';
+        src:
+        url('{{ manifest('static/fonts/manrope-medium.woff2') }}') format('woff2'),
+        url('{{ manifest('static/fonts/manrope-medium.woff') }}') format('woff');
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Manrope';
+        src:
+        url('{{ manifest('static/fonts/manrope-bold.woff2') }}') format('woff2'),
+        url('{{ manifest('static/fonts/manrope-bold.woff') }}') format('woff');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+</style>
+
+<meta
+    name="apple-mobile-web-app-title"
+    content="{{ site.title }}">
+
+<meta
+    name="application-name"
+    content="{{ site.title }}">
+
+<link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="{{ manifest('static/theme/apple-touch-icon.png') }}">
+
+<link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="{{ manifest('static/theme/favicon-32.png') }}">
+
+<link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="{{ manifest('static/theme/favicon-16.png') }}">
+
+<meta
+    property="og:title"
+    content="{{ title }}">
+
+<meta
+    property="og:description"
+    content="{{ metaDescription }}">
+
+<meta
+    property="og:type"
+    content="website">
+
+<meta
+    property="og:url"
+    content="{{ page.url }}">
+
+{% if metaImageUrl %}
+    <meta
+        property="og:image"
+        content="{{ metaImageUrl }}">
+{% endif %}

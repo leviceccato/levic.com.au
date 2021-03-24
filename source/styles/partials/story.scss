@@ -1,0 +1,65 @@
+@use '~/config/breakpoints' as *;
+@use '~/utilities/resize' as *;
+
+.Story {
+    text-align: center;
+
+    &-item {
+        text-align: left;
+        margin: 0 auto;
+        line-height: 1.5;
+        box-sizing: border-box;
+        max-width: 550px;
+        padding-left: 6px;
+        padding-right: 6px;
+        @include resize(font-size, 15px, 17px);
+
+        @include media(nav-spacing) {
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+
+        & + & {
+            @include resize(margin-top, 20px, 40px);
+        }
+
+        & + .Heading2 {
+            @include resize(margin-top, 30px, 60px);
+        }
+
+        & + .Heading3 {
+            @include resize(margin-top, 25px, 45px);
+        }
+
+        .Heading2 + & {
+            @include resize(margin-top, 15px, 25px);
+        }
+
+        .Heading3 + & {
+            @include resize(margin-top, 10px, 20px);
+        }
+
+        & + .Figure {
+            @include resize(margin-top, 40px, 110px);
+        }
+
+        .Figure + & {
+            @include resize(margin-top, 40px, 110px);
+        }
+
+        & + .Timeline {
+            @include resize(margin-top, 20px, 35px);
+        }
+    }
+
+    .Paragraph,
+    .UnorderedList,
+    .OrderedList {
+
+        & + .Paragraph,
+        & + .UnorderedList,
+        & + .OrderedList {
+            @include resize(margin-top, 7px, 15px);
+        }
+    }
+}

@@ -1,0 +1,39 @@
+<a
+    class="Skip VisuallyHidden focusable"
+    href="#main">
+    <span class="Skip-wrapper">
+        Skip to main content
+    </span>
+</a>
+
+<header
+    class="Header"
+    id="header"
+    tabindex="-1">
+
+    <nav class="Header-nav">
+        {% for column in site.children.listed | batch(2) %}
+
+            <div class="Header-column">
+                {% for navPage in column %}
+
+                    {% set isActive = navPage.isActive or page.isChildOf(navPage) %}
+
+                    <a
+                        class="Header-link {{ isActive ? 'active' }}"
+                        href="{{ navPage.url }}"
+                        {{ isActive ? 'aria-current="page"' }}>
+
+                        <span class="Header-linkWrapper">
+                            {{ navPage.title }}
+                        </span>
+
+                    </a>
+
+                {% endfor %}
+            </div>
+
+        {% endfor %}
+    </nav>
+
+</header>

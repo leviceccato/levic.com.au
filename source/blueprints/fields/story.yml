@@ -1,0 +1,140 @@
+type: builder
+label: Story
+fieldsets:
+
+  heading1:
+    name: Heading 1
+    fields:
+      text:
+        label: Text
+        type: text
+
+  heading2:
+    name: Heading 2
+    fields:
+      text:
+        label: Text
+        type: text
+
+  heading3:
+    name: Heading 3
+    fields:
+      text:
+        label: Text
+        type: text
+
+  paragraph:
+    name: Paragraph
+    fields:
+      text:
+        label: Text
+        type: textarea
+        buttons:
+          - 'bold'
+          - 'italic'
+          - 'link'
+  
+  orderedList:
+    name: Ordered List
+    fields:
+      items:
+        label: List
+        type: structure
+        fields:
+          text: 
+            label: Text
+            type: textarea
+            buttons:
+              - 'bold'
+              - 'italic'
+              - 'link'
+
+  unorderedList:
+    name: Unordered List
+    fields:
+      items:
+        label: Text
+        type: structure
+        fields:
+          text:
+            label: Item
+            type: textarea
+            buttons:
+              - 'bold'
+              - 'italic'
+              - 'link'
+
+  image:
+    name: Image
+    fields:
+
+      image:
+        label: File
+        type: image-clip
+        multiple: false 
+        layout: cards
+        query: page.images
+        uploads: image
+        clip:
+          minwidth: 1
+          minheight: 1
+          ratio: fixed
+
+      caption:
+        label: Caption
+        type: textarea
+        buttons:
+          - 'bold'
+          - 'italic'
+          - 'link'
+
+  video:
+    name: Video
+    fields:
+
+      video:
+        label: File
+        type: files
+        multiple: false
+        query: page.videos
+        uploads: video
+
+      caption:
+        label: Caption
+        type: textarea
+        buttons:
+          - 'bold'
+          - 'italic'
+          - 'link'
+
+  timeline:
+    name: Timeline
+    fields:
+      timeline:
+        type: structure
+        columns:
+          heading:
+            width: 1/5
+          subheading:
+            width: 1/5
+          date:
+            width: 1/5
+          body:
+            width: 2/5
+        fields:
+          heading:
+            label: Heading
+            type: text
+          subheading:
+            label: Subheading
+            type: text
+          date:
+            label: Date
+            type: text
+          body:
+            label: Body
+            type: textarea
+            buttons:
+              - 'bold'
+              - 'italic'
+              - 'link'

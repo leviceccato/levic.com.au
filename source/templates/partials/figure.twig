@@ -1,0 +1,42 @@
+<main class="FigurePage">
+
+    {# {{ page.debug }}
+
+    <pre>
+        {{ page.dump }}
+    </pre> #}
+
+    <h1 class="VisuallyHidden">
+        {{ page.fileAlt ?? page.fileName }}
+    </h1>
+
+    <a
+        class="FigurePage-link"
+        href="{{ page.pageUrl }}">
+
+        {% set type = page.fileType %}
+
+        {% if type == 'image' %}
+
+            <img
+                class="FigurePage-content"
+                src="{{ page.fileUrl }}"
+                alt="{{ page.fileAlt }}">
+
+        {% elseif type == 'video' %}
+
+            <video
+                class="FigurePage-content"
+                autoplay
+                loop
+                muted
+                inline
+                src="{{ page.fileUrl }}"
+                type="video/mp4">
+            </video>
+
+        {% endif %}
+
+    </a>
+
+</main>

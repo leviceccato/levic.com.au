@@ -1,0 +1,31 @@
+/**
+ * 
+ *  Line Height Crop Function
+ *  -------------------------
+ *
+ *  The line height crop function allows you to remove space above text added by
+ *  line height. It works my adding negative margin to pseudo elements.
+ *  It requires that you pass the line height as a parameter. Text height is
+ *  assumed to be the same as the line height but it situations where it isn't
+ *  you can also pass a second parameter to define the percentage of size the
+ *  text height is versus the line height. You may wish to edit the default in
+ *  this function (1) based on the main font used in your site.
+ *  
+ *  Usage:
+ *  
+ *  .selector {
+ *    @include lh-crop(1.4, 0.75);
+ *  }
+ * 
+ */
+
+@mixin lh-crop($line-height, $text-height: 0.9) {
+
+    &::before {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+        margin-top: calc((#{$text-height} - #{$line-height}) * 0.5em);
+    }
+}

@@ -1,0 +1,8 @@
+Icon
+.DS_Store
+node_modules/
+vendor/
+/public/media/
+/public/assets/
+/data/
+/source/config/.license
