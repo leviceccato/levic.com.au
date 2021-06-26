@@ -15,5 +15,8 @@ Icon
 /source/config/.license
 
 # Plugins
-/source/plugins/*
-!/source/plugins/video-tag
+/source/plugins/k3-image-clip/
+/source/plugins/kirby-builder/
+/source/plugins/kirby-colors/
+/source/plugins/kirby-twig/
+/source/plugins/kirby3-janitor/
