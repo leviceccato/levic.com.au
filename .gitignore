@@ -1,8 +1,19 @@
+# OS
 Icon
 .DS_Store
-node_modules/
-vendor/
+
+# Deps
+/node_modules/
+/vendor/
+
+# Data & assets
 /public/media/
 /public/assets/
 /data/
+
+# License
 /source/config/.license
+
+# Plugins
+/source/plugins/*
+!/source/plugins/video-tag
